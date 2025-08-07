@@ -1,26 +1,79 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Karma:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary-blue-950: hsl(256, 26%, 20%);
+  --primary-blue-500: hsl(216, 30%, 68%);
+  --neutral-gray-950: hsl(270, 9%, 17%);
+  --neutral-gray-700: hsl(273, 4%, 51%);
+  --neutral-gray-50: hsl(0, 0%, 98%);
+
+  --font-karma: 'Karma', serif;
+  --font-dm_serif: 'DM Serif Display', serif;
+  --font-size-body: 16px;
+  --font-weight-400: 400;
+  --font-weight-700: 700;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --color-blue-950: var(--primary-blue-950);
+  --color-blue-500: var(--primary-blue-500);
+  --color-gray-950: var(--neutral-gray-950);
+  --color-gray-700: var(--neutral-gray-700);
+  --color-gray-50: var(--neutral-gray-50);
+
+  --font-karma: var(--font-karma);
+  --font-dm_serif: var(--font-dm_serif);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  *,
+  ::after,
+  ::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    @apply text-[16px] min-w-screen min-h-dvh;
+  }
+  ol + ul {
+    list-style: none;
   }
 }
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  header {
+    @apply fixed top-0 left-0 z-20 flex justify-between items-center w-full bg-gray-50 py-4 md:py-1.5 px-5 md:px-20;
+  }
+  header nav .desktop-menu {
+    @apply hidden md:flex items-center gap-3 uppercase;
+  }
+  header nav .desktop-menu ul li {
+    @apply inline mx-2 text-gray-500 text-[12px] font-semibold hover:text-gray-950 cursor-pointer;
+  }
+  header nav button {
+    @apply uppercase! border-2 rounded-[2px]! cursor-pointer;
+  }
+  header nav .desktop-menu button {
+    @apply text-gray-500 hover:text-gray-50 hover:bg-gray-950;
+  }
+  header nav .mobile-menu {
+    @apply hidden max-md:flex text-center absolute top-15 left-[800px] w-full h-screen bg-blue-950 text-gray-50 pt-4 px-4;
+  }
+  header nav .mobile-menu ul {
+    @apply mt-20;
+  }
+  header nav .mobile-menu ul li {
+    @apply text-2xl uppercase font-semibold my-3;
+  }
+  header nav .mobile-menu button {
+    @apply w-full text-2xl! font-medium! mt-3 py-6!;
+  }
+  header nav .mobile-menu.close {
+    @apply transition-all duration-500 ease-out;
+  }
+  header nav .mobile-menu.open {
+    @apply left-0 transition-all duration-500 ease-in;
+  }
 }
