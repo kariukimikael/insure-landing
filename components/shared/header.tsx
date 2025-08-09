@@ -10,7 +10,6 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen)
   }
   return (
-    <div className="relative">
       <header>
         <div className="company-logo">
           <Image
@@ -75,7 +74,6 @@ const Header = () => {
           </Button>
         </div>
       </header>
-    </div>
   )
 }
 

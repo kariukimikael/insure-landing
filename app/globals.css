@@ -32,11 +32,9 @@
   ::after,
   ::before {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
   }
   body {
-    @apply text-[16px] min-w-screen min-h-dvh;
+    @apply font-serif w-screen h-dvh antialiased overflow-x-hidden;
   }
   ol + ul {
     list-style: none;
@@ -44,7 +42,7 @@
 }
 @layer components {
   header {
-    @apply fixed top-0 left-0 z-20 flex justify-between items-center w-full bg-gray-50 py-4 md:py-1.5 px-5 md:px-20;
+    @apply fixed top-0 left-0 z-20 flex justify-between items-center h-12 w-full bg-gray-50 px-5 md:px-20;
   }
   header nav .desktop-menu {
     @apply hidden md:flex items-center gap-3 uppercase;
@@ -59,7 +57,7 @@
     @apply text-gray-500 hover:text-gray-50 hover:bg-gray-950;
   }
   header nav .mobile-menu {
-    @apply hidden max-md:flex text-center absolute top-15 left-[800px] w-full h-screen bg-blue-950 text-gray-50 pt-4 px-4;
+    @apply hidden max-md:flex text-center absolute top-12 left-[800px] w-full h-screen bg-blue-950 text-gray-50 pt-4 px-4 z-50;
   }
   header nav .mobile-menu ul {
     @apply mt-20;
@@ -75,5 +73,93 @@
   }
   header nav .mobile-menu.open {
     @apply left-0 transition-all duration-500 ease-in;
+  }
+  footer {
+    @apply w-full py-4 min-md:px-20 min-md:bg-[url('/images/bg-pattern-footer-desktop.svg')] max-md:bg-[url('/images/bg-pattern-footer-mobile.svg')] bg-no-repeat bg-gray-50;
+  }
+  footer a {
+    @apply hover:text-gray-950 cursor-pointer;
+  }
+  footer .company-links {
+    @apply min-md:flex gap-4 justify-between max-md:text-center items-center uppercase text-[14px] max-md:text-[16px] font-semibold mt-4;
+  }
+  footer .company-links h3 {
+    @apply text-gray-500 my-2 font-medium;
+  }
+  footer .company-links ul li {
+    @apply text-gray-950 hover:text-gray-950 hover:underline cursor-pointer max-md:leading-5;
+  }
+  .hero-section {
+    @apply h-screen w-screen bg-gray-50;
+  }
+  .hero-section .mobile-image img {
+    @apply hidden max-md:block object-contain w-full h-auto;
+  }
+  .hero-section .hero-patterns_overlay {
+    @apply absolute top-0 left-0 w-screen h-screen z-10 flex pointer-events-none;
+  }
+  .hero-section .hero-patterns_overlay .right-bg_pattern {
+    @apply w-[50%] bg-[url('/images/bg-pattern-intro-right-desktop.svg')] max-md:bg-[url('/images/bg-pattern-intro-right-mobile.svg')] bg-no-repeat bg-top-right max-md:bg-bottom-right;
+  }
+  .hero-section .hero-patterns_overlay .left-bg_pattern {
+    @apply w-[50%] bg-[url('/images/bg-pattern-intro-left-desktop.svg')] max-md:bg-[url('/images/bg-pattern-intro-left-mobile.svg')] bg-no-repeat bg-bottom-left max-md:bg-top-left;
+  }
+
+  .hero-section .hero-content-wrapper {
+    @apply relative h-[85%] px-20 bg-blue-950 text-gray-50 flex items-center justify-center gap-2 max-md:flex-col-reverse;
+  }
+  .hero-content-wrapper .text-wrapper {
+    @apply grid gap-6 max-md:text-center max-md:place-items-center;
+  }
+  .hero-content-wrapper .text-wrapper .line {
+    @apply h-0.5 w-[160px] bg-gray-50 mt-[-28px] max-md:hidden;
+  }
+  .hero-content-wrapper .text-wrapper h1 {
+    @apply text-7xl max-md:text-5xl font-dm_serif font-bold;
+  }
+  .hero-content-wrapper .text-wrapper p {
+    @apply text-[16px] font-karma font-normal;
+  }
+  .hero-content-wrapper .text-wrapper button {
+    @apply border-2 border-gray-50 rounded-[2px]! uppercase font-semibold! text-[12px]! w-[150px] cursor-pointer hover:bg-gray-50 hover:text-gray-950;
+  }
+  .hero-content-wrapper .image-wrapper img {
+    @apply object-cover w-[480px] h-[600px] mt-45! max-md:hidden;
+  }
+  .features-section {
+    @apply bg-gray-50 px-20 py-20 max-md:px-10 max-md:mt-80 grid max-md:place-items-center;
+  }
+  .features-section .line {
+    @apply h-0.5 w-[160px] bg-gray-950;
+  }
+  .features-section h2 {
+    @apply text-4xl font-bold font-dm_serif my-12 max-md:text-center max-md:text-3xl;
+  }
+  .features-section .features-wrapper {
+    @apply flex max-md:flex-wrap justify-center gap-5;
+  }
+  .features-section .features-wrapper .feature-card {
+    @apply grid gap-4 max-md:place-items-center;
+  }
+  .features-section .features-wrapper .feature-card h3 {
+    @apply text-2xl font-dm_serif font-bold;
+  }
+  .features-section .features-wrapper .feature-card p {
+    @apply font-karma max-md:text-center;
+  }
+  .about-section {
+    @apply px-20 max-md:px-10 my-15;
+  }
+  .about-section .about-wrapper {
+    @apply bg-blue-950;
+  }
+  .about-section .about-wrapper .about-content {
+    @apply bg-[url('/images/bg-pattern-how-we-work-desktop.svg')] max-md:bg-[url('/images/bg-pattern-how-we-work-mobile.svg')] bg-no-repeat bg-right py-16 px-10 max-md:px-2 flex justify-between items-center max-md:flex-wrap max-md:justify-center gap-3;
+  }
+  .about-section .about-wrapper .about-content h1 {
+    @apply text-5xl max-md:text-3xl max-md:text-center font-dm_serif font-bold text-gray-50;
+  }
+  .about-section .about-wrapper .about-content button {
+    @apply border-2 border-gray-50 rounded-[2px]! uppercase font-medium! text-[12px]! w-[150px] cursor-pointer text-gray-50 hover:bg-gray-50 hover:text-gray-950;
   }
 }

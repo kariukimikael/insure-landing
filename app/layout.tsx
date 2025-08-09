@@ -15,9 +15,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Header />
-        {children}
-        <Footer />
+        <div className="relative w-screen h-screen">
+          <Header />
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   )
